@@ -88,6 +88,6 @@ export class DescrizioneProdottoComponent implements OnInit {
   }
 
   public get(): Observable<any> {
-    return this.http.get("https://ibraback123.herokuapp.com/api/tutorials" + this.nome);
+    return this.http.get("https://ibraback123.herokuapp.com/api/tutorials/" + this.nome);
   }
 }
