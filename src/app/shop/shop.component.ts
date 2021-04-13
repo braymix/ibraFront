@@ -9,32 +9,36 @@ import { Observable } from 'rxjs';
 })
 export class ShopComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, ) { }
   public display: String = "";
   listaAllArticolo : any = [];
 
   isCaricato:boolean = true;
   prezzo : string = "";
   ngOnInit() {
-    let displayMode = "";
-    window.addEventListener("DOMContentLoaded", () => {
-      if (window.matchMedia("(display-mode: fullscreen)").matches) {
-        displayMode = "fullscreen";
-      } else {
-        displayMode = "browser tab";
-      }
-      // Log launch display mode to analytics
-      /* console.log("DISPLAY_MODE_LAUNCH:", displayMode); */
 
-      if (displayMode == "browser tab") {
+      if (this.isMobileDevice()) {
         this.display ="p-col-4";
       }
       else{
         this.display ="p-col-12";
-      }
-    });
+      } 
+      this.isMobileDevice();
     this.getAllArticoli();
   }
+
+  public isMobileDevice() {
+    var check = false;
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+      // true for mobile device
+    return false;
+    }else{
+      // false for not mobile device
+      return true;
+      console.log("not mobile device");
+    }
+    return check;
+};
 
   public getAllArticoli(){
 
