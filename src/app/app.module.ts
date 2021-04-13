@@ -19,6 +19,8 @@ import { DescrizioneProdottoComponent } from './descrizione-prodotto/descrizione
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PricingComponent } from './pricing/pricing.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { PricingComponent } from './pricing/pricing.component';
     AvatarGroupModule,
     TimelineModule,
     NgxAudioPlayerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
