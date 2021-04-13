@@ -10,12 +10,29 @@ import { Observable } from 'rxjs';
 export class ShopComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
-
+  public display: String = "";
   listaAllArticolo : any = [];
 
   isCaricato:boolean = true;
   prezzo : string = "";
   ngOnInit() {
+    let displayMode = "";
+    window.addEventListener("DOMContentLoaded", () => {
+      if (window.matchMedia("(display-mode: fullscreen)").matches) {
+        displayMode = "fullscreen";
+      } else {
+        displayMode = "browser tab";
+      }
+      // Log launch display mode to analytics
+      /* console.log("DISPLAY_MODE_LAUNCH:", displayMode); */
+
+      if (displayMode == "browser tab") {
+        this.display ="p-col-4";
+      }
+      else{
+        this.display ="p-col-1";
+      }
+    });
     this.getAllArticoli();
   }
 
