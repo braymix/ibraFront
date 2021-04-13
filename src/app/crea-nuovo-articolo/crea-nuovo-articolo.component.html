@@ -1,0 +1,88 @@
+<form [formGroup]="formGroup" style="padding-top: 100px;">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">nome</label>
+      <textarea
+        class="form-control"
+        formControlName="nome"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">descrizione</label>
+      <textarea
+        class="form-control"
+        formControlName="descrizione"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">tipo</label>
+        <textarea
+          class="form-control"
+          formControlName="tipo"
+          id="exampleFormControlTextarea1"
+          rows="3"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">giacenza</label>
+        <textarea
+          class="form-control"
+          formControlName="giacenza"
+          id="exampleFormControlTextarea1"
+          rows="3"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">prezzo</label>
+        <textarea
+          class="form-control"
+          formControlName="prezzo"
+          id="exampleFormControlTextarea1"
+          rows="3"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">sconto</label>
+        <textarea
+          class="form-control"
+          formControlName="sconto"
+          id="exampleFormControlTextarea1"
+          rows="3"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">visibile</label>
+        <textarea
+          class="form-control"
+          formControlName="visibile"
+          id="exampleFormControlTextarea1"
+          rows="3"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">audio</label>
+        <textarea
+          class="form-control"
+          formControlName="traccia"
+          id="exampleFormControlTextarea1"
+          rows="3"
+        ></textarea>
+      </div>
+    <div class="form-group">
+    </div>
+    
+  
+  </form>
+
+  <div class="custom-file">
+    <input
+      type="file"
+      class="custom-file-input"
+    
+      (change)="saveImage($event.target.files)"
+    />
+    <label class="custom-file-label">Select File</label>
+  </div>

@@ -1,0 +1,130 @@
+<div
+  *ngIf="isCaricato"
+  style="
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); /* for IE 9 */
+    -webkit-transform: translate(-50%, -50%); /* for Safari */
+  "
+>
+  <p-progressSpinner></p-progressSpinner>
+</div>
+<div style="margin: 1vh; text-align: center;">
+  <div
+    class="p-grid"
+    style="margin-top: 3vh;"
+    *ngFor="let element of listaAllArticolo"
+  >
+    <div class="p-col-4"></div>
+    <div class="p-col-4">
+      <img
+        class="foto"
+        alt="Card"
+        src="{{ element.foto }}"
+        style="width: 100%; height: 100%;"
+      />
+    </div>
+    <div class="p-col-4"></div>
+    <div class="p-col-12">
+      <h1>{{ element.nome }}<br /></h1>
+      {{ element.tipo }}<br />
+      <h4>
+        <p *ngIf="element.sconto > 0">
+          <del>{{ element.prezzo }}€</del>
+          <strong> {{ element.pn }}€ </strong>
+          <small> {{ element.sconto }}% </small>
+        </p>
+        <p *ngIf="element.sconto == 0">{{ element.prezzo }}€</p>
+      </h4>
+      {{ element.descrizione }}<br />
+
+      <ngx-audio-player
+        [playlist]="msaapPlaylist"
+        [displayTitle]="msaapDisplayTitle"
+        muted="muted"
+        [displayPlaylist]="msaapDisplayPlayList"
+        [displayVolumeControls]="msaapDisplayVolumeControls"
+        [disablePositionSlider]="msaapDisablePositionSlider"
+        [expanded]="true"
+      ></ngx-audio-player>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isCaricato">
+  <form [formGroup]="formGroup" style="padding-top: 100px;">
+    <div class="form-group m-2">
+      <label for="exampleFormControlInput1">nome</label>
+      <textarea
+        class="form-control"
+        formControlName="nome"
+        id="exampleFormControlTextarea1"
+        rows="2"
+      ></textarea>
+    </div>
+    <div class="form-group m-2">
+      <label for="exampleFormControlTextarea1">cognome</label>
+      <textarea
+        class="form-control"
+        formControlName="cognome"
+        id="exampleFormControlTextarea1"
+        rows="2"
+      ></textarea>
+    </div>
+    <div class="form-group m-2">
+      <label for="exampleFormControlTextarea1">nome d'arte</label>
+      <textarea
+        class="form-control"
+        formControlName="nomeDarte"
+        id="exampleFormControlTextarea1"
+        rows="2"
+      ></textarea>
+    </div>
+    <div class="form-group m-2">
+      <label for="exampleFormControlTextarea1">email</label>
+      <textarea
+        class="form-control"
+        formControlName="email"
+        id="exampleFormControlTextarea1"
+        rows="2"
+      ></textarea>
+    </div>
+    <div class="form-group m-2">
+      <label for="exampleFormControlTextarea1">data di nascita</label>
+      <input
+        type="date"
+        class="form-control"
+        formControlName="dataDiNascita"
+        id="exampleFormControlTextarea1"
+        rows="2"
+      />
+    </div>
+    <div class="form-group m-2">
+      <label for="exampleFormControlTextarea1">note</label>
+      <textarea
+        class="form-control"
+        formControlName="note"
+        id="exampleFormControlTextarea1"
+        rows="5"
+      ></textarea>
+    </div>
+  </form>
+  <div
+    *ngIf="displayBasic"
+    class="alert alert-success alert-dismissible fade show mt-2"
+    role="alert"
+  >
+    <strong>IL PRODOTTO E' STATO ACQUISTATO CORRETTAMENTE</strong> verrai
+    contattato il prima possibile da un nostro collaboratore
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  <button type="button" class="btn btn-primary m-3" (click)="compra()">
+    acquista
+  </button>
+</div>
