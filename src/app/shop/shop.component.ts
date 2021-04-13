@@ -30,7 +30,7 @@ export class ShopComponent implements OnInit {
         this.display ="p-col-4";
       }
       else{
-        this.display ="p-col-1";
+        this.display ="p-col-12";
       }
     });
     this.getAllArticoli();
